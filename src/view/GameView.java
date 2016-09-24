@@ -27,8 +27,6 @@ public class GameView extends JFrame
 		yellowBtn = new JButton(""); 
 		blueBtn = new JButton("");
 		
-		greenBtn.setDoubleBuffered(false);
-		
 		this.add(greenBtn).setBackground(Color.GREEN);
 		this.add(redBtn).setBackground(Color.RED);
 		this.add(yellowBtn).setBackground(Color.YELLOW);
@@ -36,6 +34,9 @@ public class GameView extends JFrame
 		
 		this.setVisible(true);
 	}
+
+	public void showPoints(int points)
+	{  JOptionPane.showMessageDialog(null, "Você errou! Mas pontuou " + points + "  Continue treinando ;)");  }
 
 	public JButton getGreenBtn() {  return greenBtn;  }
 	public void setGreenBtnDarker() { this.greenBtn.setBackground(new Color(0,100,0));	}

@@ -46,7 +46,7 @@ public class GameController implements ActionListener
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(null, "Você errou! Mas pontuou " + (GameDAO.queue.size()-1) + "  Continue treinando ;)");
+			view.showPoints((GameDAO.queue.size()-1));
 			System.exit(0);
 		}
 	}
@@ -58,27 +58,19 @@ public class GameController implements ActionListener
 			colorsQueue.start();
 	}
 	
-	private void setBtnsEnabled()
+	private void setBtnsEnabled(boolean bool)
 	{
-		this.view.getGreenBtn().setEnabled(true);
-		this.view.getRedBtn().setEnabled(true);
-		this.view.getYellowBtn().setEnabled(true);
-		this.view.getBlueBtn().setEnabled(true);
-	}
-	
-	private void setBtnsDisabled()
-	{
-		this.view.getGreenBtn().setEnabled(false);
-		this.view.getRedBtn().setEnabled(false);
-		this.view.getYellowBtn().setEnabled(false);
-		this.view.getBlueBtn().setEnabled(false);
+		this.view.getGreenBtn().setEnabled(bool);
+		this.view.getRedBtn().setEnabled(bool);
+		this.view.getYellowBtn().setEnabled(bool);
+		this.view.getBlueBtn().setEnabled(bool);
 	}
 	
 	private class ElementShower implements Runnable
 	{
 		private void showElements()
 		{
-			setBtnsDisabled();					
+			setBtnsEnabled(false);					
 			for(int i = 0; i < GameDAO.queue.size(); i++)
 			{	
 				try {  Thread.sleep(500);  }
@@ -119,7 +111,7 @@ public class GameController implements ActionListener
 						break;
 				}			
 			}
-			setBtnsEnabled();
+			setBtnsEnabled(true);
 			GameDAO.index =  0;
 		}
 		
